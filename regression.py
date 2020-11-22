@@ -18,6 +18,12 @@ def predict_price(area) -> float:
     response = requests.get(TRAIN_DATA_URL)
     # YOUR IMPLEMENTATION HERE
     ...
+    df = pandas.read_csv(TRAIN_DATA_URL)
+    df=df.drop(['area'],axis=1)
+    area = df.columns.to_numpy().astype(float)
+    prices = df.values
+    slope, intercept, r_value, p_value, std_err = scipy.stats.linregress(x,y)
+    print(slope,intercept)
 
 
 if __name__ == "__main__":
